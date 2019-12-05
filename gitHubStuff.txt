@@ -1,0 +1,12 @@
+SET UP GIT:
+git config --global user.name ("Your GitHub username")
+git config --global user.email (Your email account associated with GitHub.com)
+
+TRANSFER PROJECT FILES TO YOUR PC
+git clone URL
+
+TRANSFER PROJECT FILES FROM PC TO GITHUB
+git add (FileName)
+git commit -m ("commit Statement") (FileName)
+git push -u origin master
+git remote add origin master (url)g
