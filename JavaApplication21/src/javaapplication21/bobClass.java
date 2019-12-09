@@ -21,7 +21,7 @@ public class bobClass extends JPanel implements KeyListener {
     boolean rotateLeft = false, rotateRight = false;
 
     public bobClass() {
-        //Hola
+        this.setSize(380,400);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -37,12 +37,14 @@ public class bobClass extends JPanel implements KeyListener {
             super.paintComponent(g);
             BOBL.paintIcon(this, g, x, y);
         }
+        
     }
 
     public void registerMovement() {
-        x += velx;
-        y += vely;
-        repaint();
+//        x += velx;
+//        y += vely;
+        //repaint();
+        this.setLocation(this.getLocation().x += velx, this.getLocation().y += vely);
     }
 
     public void up() {
