@@ -21,6 +21,7 @@ public class bobClass extends JPanel implements KeyListener {
     boolean rotateLeft = false, rotateRight = false;
 
     public bobClass() {
+        //Hola
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
