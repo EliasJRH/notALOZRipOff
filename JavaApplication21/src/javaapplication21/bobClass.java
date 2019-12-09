@@ -39,7 +39,7 @@ public class bobClass extends JPanel implements KeyListener {
         }
         
     }
-
+//
     public void registerMovement() {
 //        x += velx;
 //        y += vely;
