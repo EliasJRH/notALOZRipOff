@@ -117,19 +117,19 @@ public class classForTesting extends JPanel implements KeyListener {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth(); //sets int width to the width of the screen
         int height = (int) screenSize.getHeight(); //sets int height to the height of the screen
-        if (areaBooleans[2][2] && this.getLocation().x <= 100) {
+        if (areaBooleans[2][2] && this.getLocation().x <= 100) { //left
             areaBooleans[1][2] = true;
             areaBooleans[2][2] = false;
             this.setLocation(width - 520, this.getLocation().y);
-        } else if (areaBooleans[2][2] && this.getLocation().x >= (width - 300)) {
+        } else if (areaBooleans[2][2] && this.getLocation().x >= (width - 300)) { //right
             areaBooleans[3][2] = true;
             areaBooleans[2][2] = false;
             this.setLocation(150, this.getLocation().y);
-        }else if (areaBooleans[2][2] && this.getLocation().y <= 100){
+        }else if (areaBooleans[2][2] && this.getLocation().y <= 100){ //up
             areaBooleans[2][1] = true;
             areaBooleans[2][2] = false;
             this.setLocation(this.getLocation().x, height - 520);
-        }else if (areaBooleans[2][2] && this.getLocation().y >= (height - 300)){
+        }else if (areaBooleans[2][2] && this.getLocation().y >= (height - 300)){ //down
             areaBooleans[2][3] = true;
             areaBooleans[2][2] = false;
             this.setLocation(this.getLocation().x, 150);
