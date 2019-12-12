@@ -1,0 +1,9 @@
+package notalozripoff;
+
+public class rockClass extends JPanel {
+	//Class and modules for the rock
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		ImageIcon ROCK = new ImageIcon("pathway for the rock picture");
+	}
+}
