@@ -1,0 +1,14 @@
+package notalozripoff;
+
+public class skullHeadClass extends JPanel {
+	//Class and modules for the skull head monster
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		ImageIcon SKULLHEAD = new ImageIcon("pathway for the skull head picture");
+	}
+
+	public void skullHeadStats(int damage, int health) {
+		damage = 10;
+		health = 10;
+	}
+}
