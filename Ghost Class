@@ -1,0 +1,15 @@
+package notalozripoff;
+
+public class ghostClass extends JPanel {
+	//Class and modules for the ghost monster
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+        ImageIcon GHOST = new ImageIcon("pathway for ghost picture");
+    }
+
+    public void ghostStats(int damage, int health) {
+		damage = 5;
+		health = 1;
+	}
+        
+}
