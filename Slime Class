@@ -1,0 +1,14 @@
+package notalozripoff;
+
+public class slimeClass extends JPanel {
+	//Class and modules for the slime monster
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		ImageIcon SLIME = new ImageIcon("pathway for the slime picture");
+	}
+
+	public void slimeStats(int damage, int health) {
+		damage = 1;
+		health = 5;
+	}
+}
