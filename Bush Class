@@ -1,0 +1,9 @@
+package notalozripoff;
+
+public class bushClass extends JPanel {
+	//Class and modules for the bush
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		ImageIcon BUSH = new ImageIcon("pathway for the bush picture");
+	}
+}
