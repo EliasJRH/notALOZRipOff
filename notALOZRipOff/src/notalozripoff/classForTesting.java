@@ -117,55 +117,56 @@ public class classForTesting extends JPanel implements KeyListener {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth(); //sets int width to the width of the screen
         int height = (int) screenSize.getHeight(); //sets int height to the height of the screen
-if (areaBooleans[2][2] && this.getLocation().x <= 100) { //left
+        if (areaBooleans[2][2] && this.getLocation().x <= 100) { //left
             areaBooleans[2][2] = false;
-            areaBooleans[1][2] = true;
+            areaBooleans[2][1] = true;
             this.setLocation(width - 520, this.getLocation().y);
         } else if (areaBooleans[2][2] && this.getLocation().x >= (width - 300)) { //right
-            areaBooleans[3][2] = true;
+            areaBooleans[2][3] = true;
             areaBooleans[2][2] = false;
             this.setLocation(150, this.getLocation().y);
         } else if (areaBooleans[2][2] && this.getLocation().y <= 100) { //up
-            areaBooleans[2][1] = true;
+            areaBooleans[1][2] = true;
             areaBooleans[2][2] = false;
             this.setLocation(this.getLocation().x, height - 520);
         } else if (areaBooleans[2][2] && this.getLocation().y >= (height - 300)) { //down
-            areaBooleans[2][3] = true;
+            areaBooleans[3][2] = true;
             areaBooleans[2][2] = false;
             this.setLocation(this.getLocation().x, 150);
         }
-        if (areaBooleans[1][2] && this.getLocation().x <= 100) { //left
-            areaBooleans[0][2] = true;
-            areaBooleans[1][2] = false;
+        if (areaBooleans[2][1] && this.getLocation().x <= 100) { //left
+            areaBooleans[2][0] = true;
+            areaBooleans[2][1] = false;
             this.setLocation(width - 520, this.getLocation().y);
-        } else if (areaBooleans[1][2] && this.getLocation().x >= (width - 300)) { //right
+        } else if (areaBooleans[2][1] && this.getLocation().x >= (width - 300)) { //right
             areaBooleans[2][2] = true;
-            areaBooleans[1][2] = false;
+            areaBooleans[2][1] = false;
             this.setLocation(150, this.getLocation().y);
-        } else if (areaBooleans[1][2] && this.getLocation().y <= 100) { //up
+        } else if (areaBooleans[2][1] && this.getLocation().y <= 100) { //up
             areaBooleans[1][1] = true;
-            areaBooleans[1][2] = false;
+            areaBooleans[2][1] = false;
             this.setLocation(this.getLocation().x, height - 520);
-        } else if (areaBooleans[1][2] && this.getLocation().y >= (height - 300)) { //down
-            areaBooleans[1][3] = true;
-            areaBooleans[1][2] = false;
+        } else if (areaBooleans[2][1] && this.getLocation().y >= (height - 300)) { //down
+            areaBooleans[3][1] = true;
+            areaBooleans[2][1] = false;
             this.setLocation(this.getLocation().x, 150);
         }
-        if (areaBooleans[0][2] && this.getLocation().x <= 0) { //left
+        if (areaBooleans[2][0] && this.getLocation().x == 0) { //left
             this.setLocation(0, this.getLocation().y);
-        } else if (areaBooleans[0][2] && this.getLocation().x >= (width - 300)) { //right
-            areaBooleans[1][2] = true;
-            areaBooleans[0][2] = false;
+        } else if (areaBooleans[2][0] && this.getLocation().x >= (width - 300)) { //right
+            areaBooleans[2][1] = true;
+            areaBooleans[2][0] = false;
             this.setLocation(150, this.getLocation().y);
-        } else if (areaBooleans[0][2] && this.getLocation().y <= 100) { //up
-            areaBooleans[0][1] = true;
+        } else if (areaBooleans[2][0] && this.getLocation().y <= 100) { //up
+            areaBooleans[1][0] = true;
             areaBooleans[0][2] = false;
             this.setLocation(this.getLocation().x, height - 520);
-        } else if (areaBooleans[0][2] && this.getLocation().y >= (height - 300)) { //down
-            areaBooleans[0][3] = true;
-            areaBooleans[0][2] = false;
+        } else if (areaBooleans[2][0] && this.getLocation().y >= (height - 300)) { //down
+            areaBooleans[3][0] = true;
+            areaBooleans[2][0] = false;
             this.setLocation(this.getLocation().x, 150);
         }
+        //
         if (areaBooleans[3][2] && this.getLocation().x <= 0) { //left
             areaBooleans[2][2] = true;
             areaBooleans[3][2] = false;
@@ -353,6 +354,9 @@ if (areaBooleans[2][2] && this.getLocation().x <= 100) { //left
         } else if (areaBooleans[4][4] && this.getLocation().y >= (height - 300)) { //down
             this.setLocation(this.getLocation().x, height);
         }
+        
+        //////////
+        
         if (areaBooleans[0][0] && this.getLocation().x <= 100) { //Left Area 0:0
             this.setLocation(0, this.getLocation().y);
         } else if (areaBooleans[0][0] && this.getLocation().x >= (width - 300)) {//Right
