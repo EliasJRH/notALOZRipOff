@@ -1,0 +1,35 @@
+package notalozripoff;
+
+public class playerClass extends JPanel implements KeyListener {
+
+    int x = 0, y = 0, velx = 0, vely = 0;
+    boolean rotateLeft = false, rotateRight = false;
+    int playerdmgincrease = 0, playerhpincrease = 0;
+
+    public bobClass() {
+        //Hola
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+    }
+
+    public void paintComponent(Graphics g) {
+        //Graphics2D g1 = (Graphics2D) g;
+        super.paintComponent(g);
+        ImageIcon BOB = new ImageIcon("images/HaroldR.png");
+        ImageIcon BOBL = new ImageIcon("images/HaroldL.png");
+        BOB.paintIcon(this, g, x, y);
+        if (rotateLeft) {
+            super.paintComponent(g);
+            BOBL.paintIcon(this, g, x, y);
+        }
+        if (rotateRight) {
+        	super.paintComponent(g);
+        	BOB.paintIcon(this, g, x, y);
+        }
+    }
+    public void playerStats(int damage, int health) {
+		damage = 10 + playerdmgincrease;
+		health = 10 + playerhpincrease;
+	}
+}
