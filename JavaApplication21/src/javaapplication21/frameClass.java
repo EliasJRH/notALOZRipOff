@@ -19,9 +19,9 @@ import javax.swing.Timer;
  */
 public class frameClass extends JFrame implements ActionListener {
 
-    Timer t = new Timer(5,this);
+    Timer t = new Timer(5, this);
     secondImageClass secondImage = new secondImageClass();
-    
+
     public frameClass() throws InterruptedException {
         t.start();
         setLayout(null);
@@ -32,9 +32,9 @@ public class frameClass extends JFrame implements ActionListener {
         setResizable(false); //makes it so that the frame isnt resizable
         setVisible(true); //sets the frame to make it visible
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //sets the frame so the program stops when its closed 
-        bobClass lol = new bobClass();       
+        bobClass lol = new bobClass();
         lol.setVisible(true);
-        add(secondImage);        
+        add(secondImage);
         add(lol);
         validate();
         Thread.sleep(100);
@@ -45,20 +45,13 @@ public class frameClass extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent arg0) {
         boolean test = bobClass.detectChange;
-        if (test){
-            bobClass.detectChange = false;
+        if (test) {
             this.remove(secondImage);
-            if (bobClass.areaBooleans[2][1]){
-                secondImage.setLocation(500,250);
-            }else if (bobClass.areaBooleans[2][3]){
-                secondImage.setLocation(700,250);
-            }else if (bobClass.areaBooleans[2][2]){
-                secondImage.setLocation(500,500);
-            }
             this.add(secondImage);
             this.repaint();
             this.validate();
         }
+
     }
 
 }
