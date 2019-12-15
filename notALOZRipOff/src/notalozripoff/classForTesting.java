@@ -100,6 +100,39 @@ public class classForTesting extends JPanel implements KeyListener {
         if (code == KeyEvent.VK_LEFT) {
             left();
         }
+        if (code == KeyEvent.VK_Z) {
+            Thread attackThread = new Thread() {
+                public void run() {
+                    try {
+                        String temp = "";
+                        if (rotateRight) {
+                            temp = "right";
+                        } else if (rotateLeft) {
+                            temp = "left";
+                        }
+                        rotateLeft = false;
+                        rotateRight = false;
+                        attack = true;
+                        repaint();
+                        sleep(500);
+                        attack = false;
+                        if (temp.equals("right")) {
+                            rotateRight = true;
+                            rotateLeft = false;
+                        } else {
+                            rotateLeft = true;
+                            rotateRight = false;
+                        }
+                        repaint();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(bobClass.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+            };
+            attackThread.start();
+
+        }
     }
 
     public void keyTyped(KeyEvent arg0) {
