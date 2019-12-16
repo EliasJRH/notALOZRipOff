@@ -46,5 +46,12 @@ public class ghostClass extends JPanel implements ActionListener{
             }
         }
     }
-
+/* else if (classForTesting.xpos >= (this.getLocation().x)) {
+                JOptionPane.showMessageDialog(null, "hit");
+            } else if (classForTesting.ypos <= (this.getLocation().y - this.getHeight())) {
+                JOptionPane.showMessageDialog(null, "hit");
+            } else if (classForTesting.ypos >= (this.getLocation().y + this.getHeight())) {
+                JOptionPane.showMessageDialog(null, "hit");
+            }
+*/
 }
