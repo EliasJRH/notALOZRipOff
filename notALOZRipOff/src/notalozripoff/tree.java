@@ -52,6 +52,66 @@ public class tree extends JPanel implements ActionListener {
             }
 
         }
-
+/*
+if (classForTesting.areaBooleans[2][1]) {
+                this.setLocation(500, 250);
+            } else if (classForTesting.areaBooleans[2][3]) {
+                this.setLocation(700, 250);
+            } else if (classForTesting.areaBooleans[2][2]) {
+                this.setLocation(500, 500);
+            } else if (classForTesting.areaBooleans[2][0]) {
+            	this.setLocation(895, 23);
+            } else if (classForTesting.areaBooleans[2][4]) {
+            	this.setLocation(1377, 459);
+            }
+            //------------------------------------------- Row 0
+            else if (classForTesting.areaBooleans[0][1]) {
+            	this.setLocation(1272, 679);
+            } else if (classForTesting.areaBooleans[0][0]) {
+            	this.setLocation(616, 614);
+            } else if (classForTesting.areaBooleans[0][2]) {
+            	this.setLocation(1043, 259);
+            } else if (classForTesting.areaBooleans[0][3]) {
+            	this.setLocation(101, 63);
+            } else if (classForTesting.areaBooleans[0][4]) {
+            	this.setLocation(858, 807);
+            }
+            //------------------------------------------- Row 1
+            else if (classForTesting.areaBooleans[1][0]) {
+            	this.setLocation(872, 721);
+            } else if (classForTesting.areaBooleans[1][1]) {
+            	this.setLocation(1206, 287);
+            } else if (classForTesting.areaBooleans[1][2]) {
+            	this.setLocation(773, 444);
+            } else if (classForTesting.areaBooleans[1][3]) {
+            	this.setLocation(260, 332);
+            } else if (classForTesting.areaBooleans[1][4]) {
+            	this.setLocation(665, 464);
+            }
+            //------------------------------------------- Row 3
+            else if (classForTesting.areaBooleans[3][0]) {
+            	this.setLocation(1022, 251);
+            } else if (classForTesting.areaBooleans[3][1]) {
+            	this.setLocation(765, 100);
+            } else if (classForTesting.areaBooleans[3][2]) {
+            	this.setLocation(1350, 500);
+            } else if (classForTesting.areaBooleans[3][3]) {
+            	this.setLocation(800, 655);
+            } else if (classForTesting.areaBooleans[3][4]) {
+            	this.setLocation(365, 863);
+            }
+            //------------------------------------------- Row 4
+            else if (classForTesting.areaBooleans[4][0]) {
+            	this.setLocation(605, 698);
+            } else if (classForTesting.areaBooleans[4][1]) {
+            	this.setLocation(752, 652);
+            } else if (classForTesting.areaBooleans[4][2]) {
+            	this.setLocation(156, 840);
+            } else if (classForTesting.areaBooleans[4][3]) {
+            	this.setLocation(1250, 478);
+            } else if (classForTesting.areaBooleans[4][4]) {
+            	this.setLocation(354, 247);
+            }
+*/
     }
 }
