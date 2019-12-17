@@ -39,19 +39,29 @@ public class ghostClass extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        boolean listenForHit = classForTesting.attack;
-        if (listenForHit){
-            if (classForTesting.xpos <= (this.getWidth() + this.getLocation().x)){
-                JOptionPane.showMessageDialog(null,"hit");
+        boolean listenForHitR = classForTesting.attackR;
+        boolean listenForHitL = classForTesting.attackL;
+        boolean listenForHitU = classForTesting.attackU;
+        boolean listenForHitD = classForTesting.attackD;
+        if (listenForHitR) {
+            if ((classForTesting.xpos + 100 >= (this.getLocation().x)) && ((classForTesting.xpos + 100 < (this.getLocation().x + 75)))) { //Attack right to left
+                JOptionPane.showMessageDialog(null, "hit 1");
+            }
+        } else if (listenForHitL) {
+            if (((classForTesting.xpos) <= (this.getLocation().x + this.getWidth())) && (classForTesting.xpos >= (this.getLocation().x + this.getWidth() - 75))) { //attack left to right
+                JOptionPane.showMessageDialog(null, "hit 2");
+            }
+        } else if (listenForHitU) {
+            if (classForTesting.ypos <= (this.getLocation().y + this.getHeight()) && (classForTesting.ypos >= (this.getLocation().y + this.getHeight() - 75))) {
+                JOptionPane.showMessageDialog(null, "hit 3");
+            }
+        } else if (listenForHitD) {
+            if ((classForTesting.ypos + 200) >= (this.getLocation().y) && (classForTesting.ypos + 192 <= (this.getLocation().y + 75))) {
+                JOptionPane.showMessageDialog(null, "hit 4");
             }
         }
-    }
-/* else if (classForTesting.xpos >= (this.getLocation().x)) {
-                JOptionPane.showMessageDialog(null, "hit");
-            } else if (classForTesting.ypos <= (this.getLocation().y - this.getHeight())) {
-                JOptionPane.showMessageDialog(null, "hit");
-            } else if (classForTesting.ypos >= (this.getLocation().y + this.getHeight())) {
-                JOptionPane.showMessageDialog(null, "hit");
-            }
-*/
+        listenForHitR = false;
+        listenForHitL = false;
+        listenForHitU = false;
+        listenForHitD = false;
 }
