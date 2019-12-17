@@ -64,4 +64,65 @@ public class ghostClass extends JPanel implements ActionListener{
         listenForHitL = false;
         listenForHitU = false;
         listenForHitD = false;
+        /*
+        if (classForTesting.areaBooleans[2][1]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[2][3]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[2][2]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[2][0]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[2][4]) {
+                this.setLocation(randomxpos, randomypos);
+            }
+            //------------------------------------------- Row 0
+            else if (classForTesting.areaBooleans[0][1]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[0][0]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[0][2]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[0][3]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[0][4]) {
+                this.setLocation(randomxpos, randomypos);
+            }
+            //------------------------------------------- Row 1
+            else if (classForTesting.areaBooleans[1][0]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[1][1]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[1][2]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[1][3]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[1][4]) {
+                this.setLocation(randomxpos, randomypos);
+            }
+            //------------------------------------------- Row 3
+            else if (classForTesting.areaBooleans[3][0]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[3][1]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[3][2]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[3][3]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[3][4]) {
+                this.setLocation(randomxpos, randomypos);
+            }
+            //------------------------------------------- Row 4
+            else if (classForTesting.areaBooleans[4][0]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[4][1]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[4][2]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[4][3]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[4][4]) {
+                this.setLocation(randomxpos, randomypos);
+            }
+        */
 }
