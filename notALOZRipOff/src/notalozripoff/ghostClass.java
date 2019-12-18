@@ -65,6 +65,8 @@ public class ghostClass extends JPanel implements ActionListener{
         listenForHitU = false;
         listenForHitD = false;
         /*
+        int randomxpos = (int) (Math.random() * (1250 - 50) + 1) + 50;
+            int randomypos = (int) (Math.random() * (750 - 50) + 1) + 50;
         if (classForTesting.areaBooleans[2][1]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[2][3]) {
