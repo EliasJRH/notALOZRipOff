@@ -351,12 +351,16 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
         if (ghostClass.hitL) {
             //JOptionPane.showMessageDialog(null, "hitL");
             this.setLocation(this.getLocation().x + 25, this.getLocation().y);
+            ghostClass.hitL = false;
         } else if (ghostClass.hitR) {
             this.setLocation(this.getLocation().x - 25, this.getLocation().y);
+            ghostClass.hitR = false;
         } else if (ghostClass.hitU) {
             this.setLocation(this.getLocation().x, this.getLocation().y + 25);
+            ghostClass.hitU = false;
         } else if (ghostClass.hitD) {
             this.setLocation(this.getLocation().x, this.getLocation().y - 25);
+            ghostClass.hitD = false;
         }
         ghostClass.hitL = false;
         ghostClass.hitR = false;
