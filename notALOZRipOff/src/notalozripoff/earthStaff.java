@@ -25,7 +25,7 @@ public class earthStaff extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (classForTesting.areaBooleans[4][0]) {
             this.setVisible(true);
-            this.setLocation(750, 50);
+            this.setLocation(50, 750);
         } else {
             this.setVisible(false);
         }
