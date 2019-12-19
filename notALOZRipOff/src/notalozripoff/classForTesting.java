@@ -38,7 +38,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
     static int health = 100;
     Timer hitTimer = new Timer(5, this);
 
-    public classForTesting() {
+    public classForTesting() { //Constructor used to set up the default components for the user
         hitTimer.start();
         addKeyListener(this);
         setSize(100, 192);
@@ -50,7 +50,9 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
         areaBooleans[2][2] = true;
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) { 
+        //Method used to generate the user's position
+        //It will change based on the keys pressed Ex. Up-arrow key, user will be facing upwards
         super.paintComponent(g);
         ImageIcon standingI = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\player.png");
         ImageIcon right = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\rightFacing.png");
@@ -93,7 +95,9 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
 
     }
 
-    public void registerMovement() {
+    public void registerMovement() { 
+        //When the keys are pressed, the person will have its location changed
+        //If the left arrow key is pressed, then it's x-component of its location decreased
         this.setLocation(this.getLocation().x += velx, this.getLocation().y += vely);
     }
 
@@ -164,7 +168,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
         if (code == KeyEvent.VK_LEFT) {
             left();
         }
-        if (code == KeyEvent.VK_M) {
+        if (code == KeyEvent.VK_M) { //This key will open up the map, where it will show the person where they are
             String mapOutput = "";
             for (int rowNum = 0; rowNum < areaBooleans.length; rowNum++) {
                 for (int columnNum = 0; columnNum < areaBooleans[rowNum].length; columnNum++) {
@@ -184,7 +188,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
             JOptionPane.showMessageDialog(null, mapOutput);
 
         }
-        if (code == KeyEvent.VK_Z) {
+        if (code == KeyEvent.VK_Z) {  //Attack key
             xpos = this.getLocation().x;
             ypos = this.getLocation().y;
             this.setSize(345, 200);
@@ -201,8 +205,8 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                         String temp = "";
                         if (rotateRight) {
                             temp = "right";
-                            rotateLeft = false;
-                            rotateRight = false;
+                            rotateLeft = false; //Sets all variables false, while enabling the boolean for attacking
+                            rotateRight = false;//based on where it's facing 
                             upListener = false;
                             downListener = false;
                             attackR = true;
@@ -235,8 +239,8 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                         attackL = false;
                         attackU = false;
                         attackD = false;
-                        if (temp.equals("right")) {
-                            rotateRight = true;
+                        if (temp.equals("right")) { //Since all of the booleans for where it is facing is set to false
+                            rotateRight = true;     //A temporary boolean is used to set the person back to where it was facing
                         } else if (temp.equals("left")) {
                             rotateLeft = true;
                         } else if (temp.equals("up")) {
