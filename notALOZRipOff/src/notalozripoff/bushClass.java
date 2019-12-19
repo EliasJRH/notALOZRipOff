@@ -13,19 +13,21 @@ public class bushClass extends JPanel implements ActionListener {
     Timer placementTimer = new Timer(5, (ActionListener) this);
 
     public bushClass() {
-        placementTimer.start();
-        setSize(227, 234);      //Will change size later
+        placementTimer.start();     //Timer set to start so that it knows when to change
+        setSize(227, 234);          //As well as initializing size, location, and opacity
         setLocation(500, 500);
         setOpaque(false);
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {    //Method to set up the image
         super.paintComponent(g);
         ImageIcon BUSH = new ImageIcon("pathway for the bush picture");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //Events that occur for the bush component to change location when changing tile on the map
+        //The locations for the bush are set up randomly
         boolean findChange = classForTesting.detectChange;
         int randomxpos = (int) (Math.random() * (1250 - 50) + 1) + 50;
         int randomypos = (int) (Math.random() * (750 - 50) + 1) + 50;
