@@ -15,14 +15,14 @@ public class slimeClass extends JPanel implements ActionListener {
         setOpaque(false);
     }
     
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) { //Method used to set up the paint icon
         super.paintComponent(g);
         ImageIcon SLIME = new ImageIcon("pathway for the slime picture");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        //Sets up its location randomly based on where the player is on the map
         int randomxpos = (int) (Math.random() * (1250 - 50) + 1) + 50;
         int randomypos = (int) (Math.random() * (750 - 50) + 1) + 50;
         if (classForTesting.areaBooleans[2][1]) {       // Row 2
