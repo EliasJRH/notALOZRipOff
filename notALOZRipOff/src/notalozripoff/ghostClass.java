@@ -46,41 +46,41 @@ public class ghostClass extends JPanel implements ActionListener {
         boolean listenForHitU = classForTesting.attackU;
         boolean listenForHitD = classForTesting.attackD;
         if (listenForHitR) {
-            if ((classForTesting.xpos + 100 >= (this.getLocation().x)) && ((classForTesting.xpos + 100 < (this.getLocation().x + 75)))) { //Attack right to left
+            if ((classForTesting.xpos + 100 >= (this.getLocation().x)) && ((classForTesting.xpos + 100 < (this.getLocation().x + 25)))) { //Attack right to left
                 health -= classForTesting.strength;
                 this.setLocation(this.getLocation().x - 25, this.getLocation().y);
             }
         } else if (listenForHitL) {
-            if (((classForTesting.xpos) <= (this.getLocation().x + this.getWidth())) && (classForTesting.xpos >= (this.getLocation().x + this.getWidth() - 75))) { //attack left to right
+            if (((classForTesting.xpos) <= (this.getLocation().x + this.getWidth())) && (classForTesting.xpos >= (this.getLocation().x + this.getWidth() - 25))) { //attack left to right
                 health -= classForTesting.strength;
                 this.setLocation(this.getLocation().x + 25, this.getLocation().y);
             }
         } else if (listenForHitU) {
-            if (classForTesting.ypos <= (this.getLocation().y + this.getHeight()) && (classForTesting.ypos >= (this.getLocation().y + this.getHeight() - 75))) {
+            if (classForTesting.ypos <= (this.getLocation().y + this.getHeight()) && (classForTesting.ypos >= (this.getLocation().y + this.getHeight() - 25))) {
                 health -= classForTesting.strength;
                 this.setLocation(this.getLocation().x, this.getLocation().y - 25);
             }
         } else if (listenForHitD) {
-            if ((classForTesting.ypos + 200) >= (this.getLocation().y) && (classForTesting.ypos + 192 <= (this.getLocation().y + 75))) {
+            if ((classForTesting.ypos + 200) >= (this.getLocation().y) && (classForTesting.ypos + 192 <= (this.getLocation().y + 25))) {
                 health -= classForTesting.strength;
                 this.setLocation(this.getLocation().x, this.getLocation().y + 25);
             }
         } else {
-            if ((classForTesting.xpos <= (this.getLocation().x + this.getWidth()))) { //Attack right to left
+            if ((classForTesting.xpos <= (this.getLocation().x + this.getWidth() - 50)) && (classForTesting.xpos >= (this.getLocation().x + this.getWidth() - 75)) { //Attack right to left
                 classForTesting.health -= damage;
                 hitL = true;
-            } else if (((classForTesting.xpos + 100) == (this.getLocation().x))) { //attack left to right
+            } else if (((classForTesting.xpos + 100) >= (this.getLocation().x) + 50)) && (classForTesting.xpos + 100 <= (this.getLocation().x + 75)) { //attack left to right
                 classForTesting.health -= damage;
-                JOptionPane.showMessageDialog(null, classForTesting.xpos + " " + this.getLocation().x);
+                //JOptionPane.showMessageDialog(null, classForTesting.xpos + " " + this.getLocation().x);
                 hitR = true;
-            } else if (classForTesting.ypos == (this.getLocation().y + this.getHeight())) {
+            } else if ((classForTesting.ypos <= (this.getLocation().y + this.getHeight() - 50)) && (classForTesting.ypos >= (this.getLocation().y + this.getHeight() - 75)) {
                 classForTesting.health -= damage;
                 hitU = true;
-                JOptionPane.showMessageDialog(null, classForTesting.ypos + " 1" + this.getLocation().y);
-            } else if ((classForTesting.ypos + 192) == (this.getLocation().y)) {
+                //JOptionPane.showMessageDialog(null, classForTesting.ypos + " 1" + this.getLocation().y);
+            } else if ((classForTesting.ypos + 192) >= (this.getLocation().y + 50) && (classForTesting.ypos + 192 <= (this.getLocation().y + 75)) {
                 classForTesting.health -= damage;
                 hitD = true;
-                JOptionPane.showMessageDialog(null, classForTesting.ypos + " 2" + this.getLocation().y);
+                //JOptionPane.showMessageDialog(null, classForTesting.ypos + " 2" + this.getLocation().y);
             }
         }
         listenForHitR = false;
