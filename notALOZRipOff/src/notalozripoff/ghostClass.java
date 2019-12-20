@@ -21,16 +21,23 @@ import javax.swing.Timer;
  */
 public class ghostClass extends JPanel implements ActionListener {
 
-    Timer hitDetection = new Timer(1, this);
+    Timer hitDetection = new Timer(5, this);
     static int damage = 5;
-    static int health = 10;
+    static int health = 30;
+    int xpos = 100;
+    int ypos = 500;
     static boolean hitL = false, hitR = false, hitU = false, hitD = false;
 
     public ghostClass() {
         hitDetection.start();
         setSize(128, 128);
+        setLocation(100, 500);
         setOpaque(false);
-
+        if (health <= 0) {
+            this.setVisible(false);
+            this.setEnabled(false);
+            classForTesting.enemiesKilled++;
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -46,41 +53,24 @@ public class ghostClass extends JPanel implements ActionListener {
         boolean listenForHitU = classForTesting.attackU;
         boolean listenForHitD = classForTesting.attackD;
         if (listenForHitR) {
-            if ((classForTesting.xpos + 100 >= (this.getLocation().x)) && ((classForTesting.xpos + 100 < (this.getLocation().x + 25)))) { //Attack right to left
-                health -= classForTesting.strength;
-                this.setLocation(this.getLocation().x - 25, this.getLocation().y);
-            }
-        } else if (listenForHitL) {
-            if (((classForTesting.xpos) <= (this.getLocation().x + this.getWidth())) && (classForTesting.xpos >= (this.getLocation().x + this.getWidth() - 25))) { //attack left to right
+            if ((classForTesting.xpos + 100 >= (this.getLocation().x)) && ((classForTesting.xpos + 100 < (this.getLocation().x + 75)))) { //Attack right to left
                 health -= classForTesting.strength;
                 this.setLocation(this.getLocation().x + 25, this.getLocation().y);
             }
+        } else if (listenForHitL) {
+            if (((classForTesting.xpos) <= (this.getLocation().x + this.getWidth())) && (classForTesting.xpos >= (this.getLocation().x + this.getWidth() - 75))) { //attack left to right
+                health -= classForTesting.strength;
+                this.setLocation(this.getLocation().x - 25, this.getLocation().y);
+            }
         } else if (listenForHitU) {
-            if (classForTesting.ypos <= (this.getLocation().y + this.getHeight()) && (classForTesting.ypos >= (this.getLocation().y + this.getHeight() - 25))) {
+            if (classForTesting.ypos <= (this.getLocation().y + this.getHeight()) && (classForTesting.ypos >= (this.getLocation().y + this.getHeight() - 75))) {
                 health -= classForTesting.strength;
                 this.setLocation(this.getLocation().x, this.getLocation().y - 25);
             }
         } else if (listenForHitD) {
-            if ((classForTesting.ypos + 200) >= (this.getLocation().y) && (classForTesting.ypos + 192 <= (this.getLocation().y + 25))) {
+            if ((classForTesting.ypos + 200) >= (this.getLocation().y) && (classForTesting.ypos + 192 <= (this.getLocation().y + 75))) {
                 health -= classForTesting.strength;
                 this.setLocation(this.getLocation().x, this.getLocation().y + 25);
-            }
-        } else {
-            if ((classForTesting.xpos <= (this.getLocation().x + this.getWidth() - 50)) && (classForTesting.xpos >= (this.getLocation().x + this.getWidth() - 75)) { //Attack right to left
-                classForTesting.health -= damage;
-                hitL = true;
-            } else if (((classForTesting.xpos + 100) >= (this.getLocation().x) + 50)) && (classForTesting.xpos + 100 <= (this.getLocation().x + 75)) { //attack left to right
-                classForTesting.health -= damage;
-                //JOptionPane.showMessageDialog(null, classForTesting.xpos + " " + this.getLocation().x);
-                hitR = true;
-            } else if ((classForTesting.ypos <= (this.getLocation().y + this.getHeight() - 50)) && (classForTesting.ypos >= (this.getLocation().y + this.getHeight() - 75)) {
-                classForTesting.health -= damage;
-                hitU = true;
-                //JOptionPane.showMessageDialog(null, classForTesting.ypos + " 1" + this.getLocation().y);
-            } else if ((classForTesting.ypos + 192) >= (this.getLocation().y + 50) && (classForTesting.ypos + 192 <= (this.getLocation().y + 75)) {
-                classForTesting.health -= damage;
-                hitD = true;
-                //JOptionPane.showMessageDialog(null, classForTesting.ypos + " 2" + this.getLocation().y);
             }
         }
         listenForHitR = false;
@@ -94,21 +84,27 @@ public class ghostClass extends JPanel implements ActionListener {
             this.setVisible(true);
             this.setEnabled(true);
         }
-        if (classForTesting.detectChange){
+        if (classForTesting.detectChange) {
+            classForTesting.detectChange = false;
             int randomxpos = (int) (Math.random() * (1250 - 50) + 1) + 50;
             int randomypos = (int) (Math.random() * (750 - 50) + 1) + 50;
-        if (classForTesting.areaBooleans[2][1]) {
+            if (classForTesting.areaBooleans[2][1]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[2][3]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[2][2]) {
+                this.setLocation(randomxpos, randomypos);
+            } else if (classForTesting.areaBooleans[2][1]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[2][3]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[2][2]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[2][0]) {
-                this.setLocation(randomxpos, randomypos);
+                this.setLocation(randomxpos, randomypos);;
             } else if (classForTesting.areaBooleans[2][4]) {
                 this.setLocation(randomxpos, randomypos);
-            }
-            //------------------------------------------- Row 0
+            } //------------------------------------------- Row 0
             else if (classForTesting.areaBooleans[0][1]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[0][0]) {
@@ -119,8 +115,7 @@ public class ghostClass extends JPanel implements ActionListener {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[0][4]) {
                 this.setLocation(randomxpos, randomypos);
-            }
-            //------------------------------------------- Row 1
+            } //------------------------------------------- Row 1
             else if (classForTesting.areaBooleans[1][0]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[1][1]) {
@@ -131,8 +126,7 @@ public class ghostClass extends JPanel implements ActionListener {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[1][4]) {
                 this.setLocation(randomxpos, randomypos);
-            }
-            //------------------------------------------- Row 3
+            } //------------------------------------------- Row 3
             else if (classForTesting.areaBooleans[3][0]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[3][1]) {
@@ -143,8 +137,7 @@ public class ghostClass extends JPanel implements ActionListener {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[3][4]) {
                 this.setLocation(randomxpos, randomypos);
-            }
-            //------------------------------------------- Row 4
+            } //------------------------------------------- Row 4
             else if (classForTesting.areaBooleans[4][0]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[4][1]) {
