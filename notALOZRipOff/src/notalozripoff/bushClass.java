@@ -20,23 +20,23 @@ import javax.swing.Timer;
 public class bushClass extends JPanel implements ActionListener {
 
     int x = 0, y = 0;
-    Timer placementTimer2 = new Timer(5, this);
+    Timer placementTimer2 = new Timer(5, this); //Set timer
 
     public bushClass() {
         placementTimer2.start(); //Timer set to start so that it knows when to change
         setSize(64, 64);    //As well as initializing size, location, and opacity
-        setLocation(750, 243);
-        setOpaque(false);
+        setLocation(750, 243); //Set default location
+        setOpaque(false); //Allow transparency
     }
 
-    public void paintComponent(Graphics g1) {
+    public void paintComponent(Graphics g1) { //Create bush sprite
         super.paintComponent(g1);
-        ImageIcon bush = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\Bush.png");
-        bush.paintIcon(this, g1, x, y);
+        ImageIcon bush = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\Bush.png"); //Set image to a bush
+        bush.paintIcon(this, g1, x, y); //Update bush
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { //Randomize image location in each section of the level
         if (classForTesting.detectChange2) {
             classForTesting.detectChange2 = false;
             int randomxpos = (int) (Math.random() * (1250 - 50) + 1) + 50;
