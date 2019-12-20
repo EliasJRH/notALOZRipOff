@@ -19,23 +19,23 @@ import javax.swing.Timer;
 public class rockClass extends JPanel implements ActionListener {
 
     int x = 0, y = 0;
-    Timer placementTimer = new Timer(5, this);
+    Timer placementTimer = new Timer(5, this); //Set timer
 
-    public rockClass() {
-        placementTimer.start();
+    public rockClass() { //Start timer, set size, location and transparency
+        placementTimer.start(); //Start a timer to detect a change in location on the map
         setSize(64, 64);
         setLocation(123, 456);
         setOpaque(false);
     }
 
-    public void paintComponent(Graphics g1) {
+    public void paintComponent(Graphics g1) { //Set image and update it's location
         super.paintComponent(g1);
         ImageIcon rock = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\rock.png");
         rock.paintIcon(this, g1, x, y);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { //Use hardcoded locations for each scene
         if (classForTesting.detectChange4) {
             classForTesting.detectChange4 = false;
             if (classForTesting.areaBooleans[2][1]) {
