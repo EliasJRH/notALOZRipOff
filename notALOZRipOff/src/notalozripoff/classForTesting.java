@@ -5,6 +5,7 @@
  */
 package notalozripoff;
 
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -28,7 +30,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
     int x = 0, y = 0, velx = 0, vely = 0;
     boolean rotateLeft = false, rotateRight = false;
     public static boolean areaBooleans[][] = new boolean[5][5];
-    public static boolean detectChange = false;
+    public static boolean detectChange = false, detectChange2 = false, detectChange3 = false, detectChange4 = false, detectChange5 = false;
     static boolean attackR = false, attackL = false, attackU = false, attackD = false;
     boolean upListener = false, downListener = false;
     boolean standing = true;
@@ -36,10 +38,14 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
     static int ypos = 250;
     static int strength = 10;
     static int health = 100;
-    Timer hitTimer = new Timer(5, this);
+    static int speedBoost = 0;
+    static int enemiesKilled = 0;
+    boolean upgrade1 = false, upgrade2 = false, upgrade3 = false, upgrade4 = false;
+    static boolean fStaff = false, wStaff = false, eStaff = false, pStaff = false;
+    Timer winTimer = new Timer(5, this);
 
-    public classForTesting() { //Constructor used to set up the default components for the user
-        hitTimer.start();
+    public classForTesting() {
+        winTimer.start();
         addKeyListener(this);
         setSize(100, 192);
         setLocation(x, y);
@@ -50,9 +56,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
         areaBooleans[2][2] = true;
     }
 
-    public void paintComponent(Graphics g) { 
-        //Method used to generate the user's position
-        //It will change based on the keys pressed Ex. Up-arrow key, user will be facing upwards
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ImageIcon standingI = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\player.png");
         ImageIcon right = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\rightFacing.png");
@@ -88,23 +92,21 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
             setSize(100, 300);
             //setSize(100,192);
         }
-        if (attackD){
-            attackDownImg.paintIcon(this,g,x,y);
-            setSize(100,300);
+        if (attackD) {
+            attackDownImg.paintIcon(this, g, x, y);
+            setSize(100, 300);
         }
 
     }
 
-    public void registerMovement() { 
-        //When the keys are pressed, the person will have its location changed
-        //If the left arrow key is pressed, then it's x-component of its location decreased
+    public void registerMovement() {
         this.setLocation(this.getLocation().x += velx, this.getLocation().y += vely);
     }
 
-    public void up() {
-        vely = -10;
+    public void up() throws InterruptedException {
+        vely = -10 + speedBoost;
         velx = 0;
-        ypos -= 10;
+        ypos -= 10 - speedBoost;
         rotateLeft = false;
         rotateRight = false;
         upListener = true;
@@ -114,10 +116,10 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
 
     }
 
-    public void down() {
-        vely = 10;
+    public void down() throws InterruptedException {
+        vely = 10 + speedBoost;
         velx = 0;
-        ypos += 10;
+        ypos += 10 + speedBoost;
         rotateLeft = false;
         rotateRight = false;
         upListener = false;
@@ -126,29 +128,29 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
         registerMovement();
     }
 
-    public void left() {
+    public void left() throws InterruptedException {
         rotateLeft = true;
         rotateRight = false;
         upListener = false;
         downListener = false;
         standing = false;
-        velx = -20;
+        velx = -20 - speedBoost;
         vely = 0;
-        xpos -= 20;
+        xpos -= 20 - speedBoost;
         changeArea();
         registerMovement();
         repaint();
     }
 
-    public void right() {
+    public void right() throws InterruptedException {
         rotateRight = true;
         rotateLeft = false;
         upListener = false;
         downListener = false;
         standing = false;
-        velx = 20;
+        velx = 20 + speedBoost;
         vely = 0;
-        xpos += 20;
+        xpos += 20 + speedBoost;
         changeArea();
         registerMovement();
         repaint();
@@ -157,18 +159,34 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
     public void keyPressed(KeyEvent arg0) {
         int code = arg0.getKeyCode();
         if (code == KeyEvent.VK_RIGHT) {
-            right();
+            try {
+                right();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(classForTesting.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (code == KeyEvent.VK_UP) {
-            up();
+            try {
+                up();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(classForTesting.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (code == KeyEvent.VK_DOWN) {
-            down();
+            try {
+                down();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(classForTesting.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (code == KeyEvent.VK_LEFT) {
-            left();
+            try {
+                left();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(classForTesting.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        if (code == KeyEvent.VK_M) { //This key will open up the map, where it will show the person where they are
+        if (code == KeyEvent.VK_M) {
             String mapOutput = "";
             for (int rowNum = 0; rowNum < areaBooleans.length; rowNum++) {
                 for (int columnNum = 0; columnNum < areaBooleans[rowNum].length; columnNum++) {
@@ -188,7 +206,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
             JOptionPane.showMessageDialog(null, mapOutput);
 
         }
-        if (code == KeyEvent.VK_Z) {  //Attack key
+        if (code == KeyEvent.VK_Z) {
             xpos = this.getLocation().x;
             ypos = this.getLocation().y;
             this.setSize(345, 200);
@@ -205,8 +223,8 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                         String temp = "";
                         if (rotateRight) {
                             temp = "right";
-                            rotateLeft = false; //Sets all variables false, while enabling the boolean for attacking
-                            rotateRight = false;//based on where it's facing 
+                            rotateLeft = false;
+                            rotateRight = false;
                             upListener = false;
                             downListener = false;
                             attackR = true;
@@ -239,8 +257,8 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                         attackL = false;
                         attackU = false;
                         attackD = false;
-                        if (temp.equals("right")) { //Since all of the booleans for where it is facing is set to false
-                            rotateRight = true;     //A temporary boolean is used to set the person back to where it was facing
+                        if (temp.equals("right")) {
+                            rotateRight = true;
                         } else if (temp.equals("left")) {
                             rotateLeft = true;
                         } else if (temp.equals("up")) {
@@ -258,8 +276,14 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
             attackThread.start();
             this.setSize(100, 192);
         }
-        if (code == KeyEvent.VK_X){
-            JOptionPane.showMessageDialog(null, xpos);
+        if (code == KeyEvent.VK_X) {
+            JOptionPane.showMessageDialog(null, xpos + "" + ypos);
+        }
+        if (code == KeyEvent.VK_K) {
+            JOptionPane.showMessageDialog(null, "Strength:" + strength + "\n"
+                    + "Speed Boost:" + speedBoost + "\n"
+                    + "Enemies Killed:" + enemiesKilled);
+            fStaff = true;
         }
     }
 
@@ -280,7 +304,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
         //JOptionPane.showMessageDialog(null, String.valueOf(areaBooleans[0]) + areaBooleans[1] + areaBooleans[2]);
     }
 
-    public void changeArea() {
+    public void changeArea() throws InterruptedException {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth(); //sets int width to the width of the screen
         int height = (int) screenSize.getHeight(); //sets int height to the height of the screen
@@ -291,7 +315,7 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                     rowCoord = rowNum; //once it finds the boolean, gets it coordinates
                     columnCoord = columnNum;
                     break; //breaks out of the loop because there is no need to check since only one variable will always be true
-                    
+
                 }
             }
         } //The next for block tells the jpanel how to position itself based on it's position on the screen and in the array
@@ -304,7 +328,14 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                 columnCoord--; //changes the column coordinate count
                 areaBooleans[rowCoord][columnCoord] = true; //makes that position boolean true
                 this.setLocation(width - this.getWidth(), this.getLocation().y); //changes the position of the charcter to make it seem like he came from the right
+                xpos = width - this.getWidth();
                 detectChange = true;
+                detectChange2 = true;
+                detectChange3 = true;
+                detectChange4 = true;
+                detectChange5 = true;
+                Thread.sleep(2);
+                //detectChange = false;
                 reviveMonsters();
             } //This structure is the same for the 3 other directions, just changed some variable around, serves the same purpose
         } else if ((this.getLocation().x + velx) >= width - this.getWidth()) {//If the character is in the right most of the screen
@@ -315,7 +346,14 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                 columnCoord++;
                 areaBooleans[rowCoord][columnCoord] = true;
                 this.setLocation(0, this.getLocation().y);
+                xpos = 0;
                 detectChange = true;
+                detectChange2 = true;
+                detectChange3 = true;
+                detectChange4 = true;
+                detectChange5 = true;
+                Thread.sleep(2);
+                //detectChange = false;
                 reviveMonsters();
             }
         } else if ((this.getLocation().y + vely) <= 0) {
@@ -326,7 +364,13 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                 rowCoord--;
                 areaBooleans[rowCoord][columnCoord] = true;
                 this.setLocation(this.getLocation().x, height - this.getHeight());
+                ypos = height - this.getHeight();
                 detectChange = true;
+                detectChange2 = true;
+                detectChange3 = true;
+                detectChange4 = true;
+                detectChange5 = true;
+                Thread.sleep(2);
                 reviveMonsters();
             }
         } else if ((this.getLocation().y + vely) >= height - this.getHeight()) {
@@ -338,11 +382,16 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
                 areaBooleans[rowCoord][columnCoord] = true;
                 this.setLocation(this.getLocation().x, 0);
                 detectChange = true;
+                detectChange2 = true;
+                detectChange3 = true;
+                detectChange4 = true;
+                detectChange5 = true;
+                Thread.sleep(2);
                 reviveMonsters();
             }
         }
         //detectChange = false;
-        
+
     }
 
     public void getHit() {
@@ -352,27 +401,47 @@ public class classForTesting extends JPanel implements KeyListener, ActionListen
     //Hello
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (ghostClass.hitL) {
-            //JOptionPane.showMessageDialog(null, "hitL");
-            this.setLocation(this.getLocation().x + 25, this.getLocation().y);
-            ghostClass.hitL = false;
-        } else if (ghostClass.hitR) {
-            this.setLocation(this.getLocation().x - 25, this.getLocation().y);
-            ghostClass.hitR = false;
-        } else if (ghostClass.hitU) {
-            this.setLocation(this.getLocation().x, this.getLocation().y + 25);
-            ghostClass.hitU = false;
-        } else if (ghostClass.hitD) {
-            this.setLocation(this.getLocation().x, this.getLocation().y - 25);
-            ghostClass.hitD = false;
+//        if (enemiesKilled == 5 && upgrade1 == false) {
+//            upgrade1 = true;
+//            strength += 5;
+//            JOptionPane.showMessageDialog(null, "You have leveled up!");
+//        } else if (enemiesKilled == 10 && upgrade1) {
+//            upgrade2 = true;
+//            strength += 5;
+//            JOptionPane.showMessageDialog(null, "You have leveled up!");
+//        } else if (enemiesKilled == 15 && upgrade2) {
+//            upgrade3 = true;
+//            strength += 5;
+//            JOptionPane.showMessageDialog(null, "You have leveled up!");
+//        } else if (enemiesKilled == 20 && upgrade3) {
+//            upgrade4 = true;
+//            strength += 5;
+//            JOptionPane.showMessageDialog(null, "You have leveled up!");
+//        } else if (enemiesKilled == 25 && upgrade4) {
+//            speedBoost += 5;
+//            JOptionPane.showMessageDialog(null, "You have leveled up!");
+//        }
+        if (fStaff && wStaff && eStaff && pStaff) {
+            JOptionPane.showMessageDialog(null, "Congratulations \n"
+                    + "You have collected all of the elemental staffs \n"
+                    + "and have stopped the evil Garmandor, the bad, the demon king and the prince of darkness \n"
+                    + "You also saved all of the princesses and have stopped the impending plague \n"
+                    + "You have brought peace to the land and may now rest");
+            JOptionPane.showMessageDialog(null, "However \n"
+                    + "You have also been deemed too powerful \n"
+                    + "and have been given a life sentence by the royal guards");
+            try {
+                Desktop.getDesktop().browse(new URL("https://www.youtube.com/watch?v=a3f7n08yYUU").toURI()); //Opens a url
+            } catch (Exception f) { //catch exception to open url
+                f.printStackTrace();
+            }
+            System.exit(0);
         }
-        ghostClass.hitL = false;
-        ghostClass.hitR = false;
-        ghostClass.hitU = false;
-        ghostClass.hitD = false;
+
     }
-    
-    public static void reviveMonsters(){
-        ghostClass.health = 5;
+
+    public static void reviveMonsters() {
+        ghostClass.health = 30;
+        slimeClass.health = 50;
     }
 }
