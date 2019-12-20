@@ -23,23 +23,23 @@ import javax.swing.Timer;
 public class tree extends JPanel implements ActionListener {
 
     int x = 0, y = 0;
-    Timer placementTimer = new Timer(5, this);
+    Timer placementTimer = new Timer(5, this); //Create new timer 
 
-    public tree() {
-        placementTimer.start();
-        setSize(227, 234);
-        setLocation(500, 500);
-        setOpaque(false);
+    public tree() { //Create tree class
+        placementTimer.start(); //Start a timer to detect a change in location on the map
+        setSize(227, 234); //Set dimensions for tree 
+        setLocation(500, 500); //Sets location
+        setOpaque(false); //Allow transparency
     }
 
-    public void paintComponent(Graphics g1) {
+    public void paintComponent(Graphics g1) { //Set Tree image and location
         super.paintComponent(g1);
-        ImageIcon tree = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\tree.png");
-        tree.paintIcon(this, g1, x, y);
+        ImageIcon tree = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\tree.png"); //Import tree image
+        tree.paintIcon(this, g1, x, y); //Update tree location
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { //Randomize tree position to hardcoded locations
         if (classForTesting.detectChange) {
             classForTesting.detectChange = false;
             if (classForTesting.areaBooleans[2][1]) {
