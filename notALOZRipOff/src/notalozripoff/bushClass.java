@@ -1,39 +1,46 @@
-
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package notalozripoff;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
+/**
+ *
+ * @author s241556
+ */
 public class bushClass extends JPanel implements ActionListener {
 
     int x = 0, y = 0;
-    Timer placementTimer = new Timer(5, (ActionListener) this);
+    Timer placementTimer2 = new Timer(5, this);
 
     public bushClass() {
-        placementTimer.start();     //Timer set to start so that it knows when to change
-        setSize(227, 234);          //As well as initializing size, location, and opacity
-        setLocation(500, 500);
+        placementTimer2.start(); //Timer set to start so that it knows when to change
+        setSize(64, 64);    //As well as initializing size, location, and opacity
+        setLocation(750, 243);
         setOpaque(false);
     }
 
-    public void paintComponent(Graphics g) {    //Method to set up the image
-        super.paintComponent(g);
-        ImageIcon BUSH = new ImageIcon("pathway for the bush picture");
+    public void paintComponent(Graphics g1) {
+        super.paintComponent(g1);
+        ImageIcon bush = new ImageIcon("C:\\Users\\s241556\\Documents\\NetBeansProjects\\notALOZRipOff\\areaImages\\Bush.png");
+        bush.paintIcon(this, g1, x, y);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Events that occur for the bush component to change location when changing tile on the map
-        //The locations for the bush are set up randomly
-        boolean findChange = classForTesting.detectChange;
-        int randomxpos = (int) (Math.random() * (1250 - 50) + 1) + 50;
-        int randomypos = (int) (Math.random() * (750 - 50) + 1) + 50;
-
-        if (findChange) {
-            classForTesting.detectChange = false;
+        if (classForTesting.detectChange2) {
+            classForTesting.detectChange2 = false;
+            int randomxpos = (int) (Math.random() * (1250 - 50) + 1) + 50;
+            int randomypos = (int) (Math.random() * (750 - 50) + 1) + 50;
             if (classForTesting.areaBooleans[2][1]) {
                 this.setLocation(randomxpos, randomypos);
             } else if (classForTesting.areaBooleans[2][3]) {
@@ -95,8 +102,6 @@ public class bushClass extends JPanel implements ActionListener {
             } else if (classForTesting.areaBooleans[4][4]) {
                 this.setLocation(randomxpos, randomypos);
             }
-
         }
-
     }
 }
